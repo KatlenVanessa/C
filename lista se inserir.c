@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
+
 typedef struct No{
 	int valor;
 	struct No *proximo;
@@ -11,14 +13,37 @@ typedef struct {
 	int tamanho;
 }Lista; 
 
+
 //Insercao no inicio da lista
 void inserir_inicio(Lista *lista, int valor ){
 	No *novo = (No*)malloc(sizeof(No));
-	novo->valor = valor;//a região de memoria apontada por novo, na posicao valor vai receber ...
+	novo->valor = valor;//a região de memoria apontada por novo, na posicao valor vai 
+						//receber ...
 						//(*novo).valor = valor é a mesma coisa	
 	novo->proximo = lista->inicio;
 	lista->inicio = novo;
 	lista->tamanho++;
+}
+
+
+//Insercao no fim da lista
+void inserir_fim(Lista *lista, int valor ){
+	No *no, *novo = (No*)malloc(sizeof(No));
+	novo->valor = valor;//a região de memoria apontada por novo, na posicao valor vai 
+						//receber ...
+						//(*novo).valor = valor é a mesma coisa	
+	novo->proximo = NULL;
+	if(lista->inicio == NULL){
+		lista->inicio = novo;
+	}else{
+		no = lista->inicio;
+		while(no->proximo != NULL){
+			no = no->proximo;
+		no->proximo = novo;
+		}
+	}
+	lista->tamanho++;
+
 }
 //imprimir a lista
 void imprimir(Lista *lista){
@@ -39,7 +64,7 @@ int main(){
 	int opcao, valor;
 	
 	do{
-		printf("1 - Inserir no inicio\n2 - Imprimir\n5 - Sair");
+		printf("1 - Inserir no inicio\n2 - Inserir no fim\n3 - Imprimir\n5 - Sair\n");
 		scanf("%d ", &opcao);
 		switch(opcao){
 		case 1:
@@ -47,7 +72,12 @@ int main(){
 			scanf("%d ", &valor);
 			inserir_inicio(&lista, valor);
 			break;
-		case 2 : 
+		case 2:
+			printf("Digite o numero a ser inserido!\n");
+			scanf("%d", &valor);
+			inserir_fim(&lista, valor);
+			break;
+		case 3 : 
 			imprimir(&lista);
 			break;
 		case 5:
