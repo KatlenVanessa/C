@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
+//https://www.youtube.com/watch?v=lgPgknuUK-s&t=2326s
 
 typedef struct No{
 	int valor;
@@ -17,9 +17,9 @@ typedef struct {
 //Insercao no inicio da lista
 void inserir_inicio(Lista *lista, int valor ){
 	No *novo = (No*)malloc(sizeof(No));
-	novo->valor = valor;//a região de memoria apontada por novo, na posicao valor vai 
+	novo->valor = valor;//a regiÃ£o de memoria apontada por novo, na posicao valor vai 
 						//receber ...
-						//(*novo).valor = valor é a mesma coisa	
+						//(*novo).valor = valor Ã© a mesma coisa	
 	novo->proximo = lista->inicio;
 	lista->inicio = novo;
 	lista->tamanho++;
@@ -29,9 +29,9 @@ void inserir_inicio(Lista *lista, int valor ){
 //Insercao no fim da lista
 void inserir_fim(Lista *lista, int valor ){
 	No *no, *novo = (No*)malloc(sizeof(No));
-	novo->valor = valor;//a região de memoria apontada por novo, na posicao valor vai 
+	novo->valor = valor;//a regiÃ£o de memoria apontada por novo, na posicao valor vai 
 						//receber ...
-						//(*novo).valor = valor é a mesma coisa	
+						//(*novo).valor = valor Ã© a mesma coisa	
 	novo->proximo = NULL;
 	if(lista->inicio == NULL){
 		lista->inicio = novo;
